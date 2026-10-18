@@ -1,0 +1,20 @@
+# Datos de pacientes: no se suben nunca
+datos/
+*.csv
+*.xlsx
+*.rds
+*.RData
+*.rda
+
+# Credenciales
+.Renviron
+*.json
+
+# Resultados que generan los scripts
+graficos*/
+resultados*/
+
+# R, RStudio y Python
+.Rhistory
+.Rproj.user/
+__pycache__/
