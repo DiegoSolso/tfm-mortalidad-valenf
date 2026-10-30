@@ -1,6 +1,15 @@
 # Mortalidad intrahospitalaria y perfiles de riesgo de la valoración enfermera
 
-Código del Trabajo Fin de Máster de Diego Solsona Ostal (Máster Universitario en Sistemas Inteligentes, Universitat Jaume I, 2026).
+Código de mi Trabajo Fin de Máster (Máster Universitario en Sistemas Inteligentes, Universitat Jaume I, 2026), desarrollado en el grupo de investigación GIANT con datos del Hospital Universitario de La Plana.
+
+**Pregunta:** ¿el perfil de riesgo que se asigna en la primera valoración enfermera (instrumento VALENF) permite predecir la mortalidad durante el ingreso?
+
+## Resumen
+
+- **Datos:** 8.673 episodios de hospitalización de adultos, de marzo de 2023 a febrero de 2024. En 426 (4,9 %) el paciente falleció; el alta con vida se trata como censura.
+- **Estudio preliminar:** la regresión de Cox (C-index 0,852) discriminó algo mejor que el Random Survival Forest (0,842), así que el trabajo siguió con modelos estadísticos.
+- **Modelo final:** un modelo loglineal de Weibull con el perfil, cuatro constantes vitales (frecuencia cardiaca, presión arterial sistólica y diastólica y saturación de oxígeno) y el tipo de ingreso y de proceso.
+- **Resultados:** el perfil fue la variable que más aportó. El modelo obtuvo un C-index de 0,832 con validación cruzada y una razón de muertes observadas y esperadas (O/E) de 1,00 a 7 días.
 
 ## Scripts
 
@@ -14,6 +23,11 @@ Código del Trabajo Fin de Máster de Diego Solsona Ostal (Máster Universitario
 | `comparacion_weibull_rsf.R` | Modelo de Weibull frente al RSF. |
 | `comprobaciones_discusion.R` | Comprobaciones que se citan en la discusión. |
 | `cox_julia.jl` | Regresión de Cox del estudio preliminar en Julia (cuaderno de Pluto). |
+
+## Requisitos
+
+- **R**, con los paquetes `survival`, `randomForestSRC`, `dplyr`, `tidyr`, `lubridate`, `ggplot2`, `broom`, `DBI` y `RPostgres`.
+- **Julia**, solo para `cox_julia.jl`, con `CSV`, `DataFrames`, `CategoricalArrays`, `StatsModels` y `Survival`.
 
 ## Datos
 
@@ -31,3 +45,9 @@ VALENF_HOST=...
 VALENF_USUARIO=...
 VALENF_CLAVE=...
 ```
+
+## Autor
+
+Diego Solsona Ostal · [LinkedIn](https://www.linkedin.com/in/diego-solsona-dev)
+
+Trabajo dirigido por Óscar Belmonte Fernández y Reyes Grangel Seguer.
